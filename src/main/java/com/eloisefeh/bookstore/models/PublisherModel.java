@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-@Data
+@Data   
 @Entity
 @Table(name = "tb_publisher")
 public class PublisherModel {

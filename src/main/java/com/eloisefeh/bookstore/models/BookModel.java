@@ -1,5 +1,6 @@
 package com.eloisefeh.bookstore.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -23,7 +24,7 @@ public class BookModel {
     private String releaseDate;
 
     // cria relacimento e a coluna no banco que armazena a referência
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "publisherId", nullable = false)
     private PublisherModel publisher;
 
