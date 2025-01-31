@@ -7,6 +7,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PublisherService {
 
@@ -21,5 +23,9 @@ public class PublisherService {
         publisherModel.setSite(publisherDto.site());
 
         return publisherRepository.save(publisherModel);
+    }
+
+    public List<PublisherModel> findAll() {
+        return publisherRepository.findAll();
     }
 }

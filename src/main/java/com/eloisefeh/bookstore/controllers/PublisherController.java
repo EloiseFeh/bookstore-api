@@ -25,7 +25,9 @@ public class PublisherController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PublisherModel>> getAllPublishers(){
-
+    public ResponseEntity<List<PublisherModel>> getAllPublisher(){
+        List<PublisherModel> publishers = publisherService.findAll();
+        return ResponseEntity.ok(publishers);
     }
+
 }
