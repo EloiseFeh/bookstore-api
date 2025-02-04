@@ -1,6 +1,4 @@
-package com.eloisefeh.bookstore.dtos;
-
-import com.eloisefeh.bookstore.models.PublisherModel;
+package com.eloisefeh.bookstore.book.dtos;
 
 public record BookRecordDto(String name,
                             String totalQuantity,

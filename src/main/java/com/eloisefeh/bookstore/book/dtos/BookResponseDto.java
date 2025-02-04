@@ -1,4 +1,4 @@
-package com.eloisefeh.bookstore.dtos;
+package com.eloisefeh.bookstore.book.dtos;
 
 import lombok.Data;
 

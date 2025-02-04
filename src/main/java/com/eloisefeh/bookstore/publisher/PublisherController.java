@@ -1,8 +1,5 @@
-package com.eloisefeh.bookstore.controllers;
+package com.eloisefeh.bookstore.publisher;
 
-import com.eloisefeh.bookstore.dtos.PublisherRecordDto;
-import com.eloisefeh.bookstore.models.PublisherModel;
-import com.eloisefeh.bookstore.services.PublisherService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

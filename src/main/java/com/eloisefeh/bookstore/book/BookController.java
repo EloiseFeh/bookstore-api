@@ -1,12 +1,8 @@
-package com.eloisefeh.bookstore.controllers;
+package com.eloisefeh.bookstore.book;
 
-import com.eloisefeh.bookstore.dtos.BookRecordDto;
-import com.eloisefeh.bookstore.dtos.BookResponseDto;
-import com.eloisefeh.bookstore.models.BookModel;
-import com.eloisefeh.bookstore.repositories.BookRepository;
-import com.eloisefeh.bookstore.services.BookService;
+import com.eloisefeh.bookstore.book.dtos.BookRecordDto;
+import com.eloisefeh.bookstore.book.dtos.BookResponseDto;
 import jakarta.validation.Valid;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

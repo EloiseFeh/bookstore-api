@@ -1,4 +1,4 @@
-package com.eloisefeh.bookstore.dtos;
+package com.eloisefeh.bookstore.publisher;
 
 public record PublisherRecordDto(String name,
                                  String phone,

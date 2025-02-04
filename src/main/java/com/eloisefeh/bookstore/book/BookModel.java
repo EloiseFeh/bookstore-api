@@ -1,6 +1,6 @@
-package com.eloisefeh.bookstore.models;
+package com.eloisefeh.bookstore.book;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.eloisefeh.bookstore.publisher.PublisherModel;
 import jakarta.persistence.*;
 import lombok.Data;
 

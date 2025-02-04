@@ -1,6 +1,5 @@
-package com.eloisefeh.bookstore.repositories;
+package com.eloisefeh.bookstore.book;
 
-import com.eloisefeh.bookstore.models.BookModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,18 +1,15 @@
-package com.eloisefeh.bookstore.services;
+package com.eloisefeh.bookstore.book;
 
-import com.eloisefeh.bookstore.dtos.BookRecordDto;
-import com.eloisefeh.bookstore.dtos.BookResponseDto;
-import com.eloisefeh.bookstore.models.BookModel;
-import com.eloisefeh.bookstore.models.PublisherModel;
-import com.eloisefeh.bookstore.repositories.BookRepository;
-import com.eloisefeh.bookstore.repositories.PublisherRepository;
+import com.eloisefeh.bookstore.book.dtos.BookRecordDto;
+import com.eloisefeh.bookstore.book.dtos.BookResponseDto;
+import com.eloisefeh.bookstore.publisher.PublisherModel;
+import com.eloisefeh.bookstore.publisher.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class BookService {
