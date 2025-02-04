@@ -26,18 +26,17 @@ public class BookController {
     private BookRepository bookRepository;
 
     @PostMapping
-    public ResponseEntity<BookModel> createBook(@RequestBody @Valid BookRecordDto book){
-        BookModel createdBook = bookService.saveBook(null, book);
+    public ResponseEntity<BookResponseDto> createBook(@RequestBody @Valid BookRecordDto book) {
+        BookResponseDto createdBook = bookService.saveBook(null, book);
         return new ResponseEntity<>(createdBook, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<BookModel> updateBook(@PathVariable Long id,
-                                                @RequestBody @Valid BookRecordDto book){
-        BookModel updatedBook = bookService.saveBook(id, book);
+    public ResponseEntity<BookResponseDto> updateBook(@PathVariable Long id,
+                                                      @RequestBody @Valid BookRecordDto book) {
+        BookResponseDto updatedBook = bookService.saveBook(id, book);
         return ResponseEntity.status(HttpStatus.OK).body(updatedBook);
     }
-
     @GetMapping
     public ResponseEntity<List<BookResponseDto>> getAllBooks(){
         List<BookResponseDto> books = bookService.getAllBooks();
@@ -45,21 +44,21 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BookResponseDto> getBookById(@PathVariable Long id) {
+    public ResponseEntity<Object> getBookById(@PathVariable Long id) {
         BookResponseDto book = bookService.getById(id);
         return ResponseEntity.ok(book);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteBook (@PathVariable Long id){
+    public ResponseEntity<Object> deleteBook(@PathVariable Long id){
         Optional<BookModel> bookOptional = bookService.findById(id);
 
         if (!bookOptional.isPresent()){
-            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body("Book not found");
+            return  ResponseEntity.status(HttpStatus.NOT_FOUND).body("Livro não encontrado");
         }
 
         bookService.delete(bookOptional.get());
-        return ResponseEntity.status(HttpStatus.OK).body("Book deleted succefully");
+        return ResponseEntity.status(HttpStatus.OK).body("Livro deletado com sucesso!");
     }
 
 

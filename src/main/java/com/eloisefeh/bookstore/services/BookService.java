@@ -24,7 +24,7 @@ public class BookService {
     private PublisherRepository publisherRepository;
 
     @Transactional
-    public BookModel saveBook(Long id, BookRecordDto bookDto){
+    public BookResponseDto saveBook(Long id, BookRecordDto bookDto){
 
         BookModel bookModel = (id != null) ? bookRepository.findById(id)
                         .orElseThrow(() -> new RuntimeException("Livro não encontrado"))
@@ -39,7 +39,15 @@ public class BookService {
 
         bookModel.setPublisher((publisher));
 
-        return bookRepository.save(bookModel);
+        BookModel savedBook = bookRepository.save(bookModel);
+
+        return new BookResponseDto(
+                savedBook.getId(),
+                savedBook.getName(),
+                savedBook.getTotalQuantity(),
+                savedBook.getReleaseDate(),
+                savedBook.getPublisher().getId()
+        );
     }
 
     public List<BookResponseDto> getAllBooks(){
@@ -72,6 +80,7 @@ public class BookService {
     }
 
     @Transactional
-    public void delete(BookModel bookModel){
-    bookRepository.delete(bookModel);}
+        public void delete(BookModel bookModel){
+        bookRepository.delete(bookModel);
+    }
 }
