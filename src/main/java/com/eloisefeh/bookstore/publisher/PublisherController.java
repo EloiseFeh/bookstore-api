@@ -3,6 +3,10 @@ package com.eloisefeh.bookstore.publisher;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -41,8 +45,16 @@ public class PublisherController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PublisherModel>> getAllPublisher(){
-        List<PublisherModel> publishers = publisherService.findAll();
+    public ResponseEntity<Page<PublisherModel>> getAllPublisher(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "asc") String direction
+    ){
+        Sort sort = direction.equalsIgnoreCase("asc") ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+        Pageable pageable = PageRequest.of(page,size,sort);
+
+        Page<PublisherModel> publishers = publisherService.findAll(pageable);
         return ResponseEntity.ok(publishers);
     }
 

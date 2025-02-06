@@ -5,6 +5,8 @@ import com.eloisefeh.bookstore.book.dtos.BookResponseDto;
 import com.eloisefeh.bookstore.publisher.PublisherModel;
 import com.eloisefeh.bookstore.publisher.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,16 +49,15 @@ public class BookService {
         );
     }
 
-    public List<BookResponseDto> getAllBooks(){
-        return bookRepository.findAll().stream()
+    public Page<BookResponseDto> getAllBooks(Pageable pageable){
+        return bookRepository.findAll(pageable)
                 .map(book -> new BookResponseDto(
                         book.getId(),
                         book.getName(),
                         book.getTotalQuantity(),
                         book.getReleaseDate(),
                         book.getPublisher().getId()
-                ))
-                .toList();
+                ));
     }
 
     public BookResponseDto getById(Long id){

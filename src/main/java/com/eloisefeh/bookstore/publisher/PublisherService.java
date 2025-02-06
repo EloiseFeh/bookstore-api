@@ -1,6 +1,8 @@
 package com.eloisefeh.bookstore.publisher;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,8 +19,8 @@ public class PublisherService {
         return publisherRepository.save(publisherModel);
     }
 
-    public List<PublisherModel> findAll() {
-        return publisherRepository.findAll();
+    public Page<PublisherModel> findAll(Pageable pageable) {
+        return publisherRepository.findAll(pageable);
     }
 
     public Optional<PublisherModel> findById(Long id){
